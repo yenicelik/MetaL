@@ -1,5 +1,4 @@
 import sys
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -11,34 +10,18 @@ import matplotlib.pyplot as plt
 class Visualizer3D:
     """ This class viszalizes any 3D object """
 
-    def __init__(self, X_path, y_path=None, descr=""):
+    def __init__(self, X, y=None, descr=""):
         self.RND_SEED = 0  # as we want the experiments to be reproducable!
         print("Starting visualizer...")
-        X, y = self._import_data(X_path, y_path, descr)
         X = self._reshape(X, (-1, 176, 208, 176))
         self.X = X
+        self.y = y
         self.descr = descr
 
     def visualize(self):
         """ Visualize the 3D data from all possible angles """
         for i in range(1, 4):
             self._show_image_by_dim(self.X, i, self.descr)
-
-    def _import_data(self, X_path, y_path=None, descr=""):
-        # Currently assume that we have pandas-structure
-        # Assumptions: X.npy and y.csv
-        X = np.load(X_path)
-
-        print("General dimensions: ")
-        print("X" + descr + ": ", X.shape)
-
-        if y_path is not None:
-            y = pd.read_csv(y_path).as_matrix()
-            print("y" + descr + ": ", y.shape)
-        else:
-            y = None
-
-        return X, y
 
     def _reshape(self, X, dim):
         # We have to reshape if we have a row-only dataset
@@ -62,8 +45,6 @@ class Visualizer3D:
             print("No real dimension was given! dim must be from amongst {1, 2, 3}")
             print("From _show_image_by_dim")
             sys.exit(16)
-
-        print(img_slice)
 
         plt.imshow(img_slice)
         print("Saving...", dim, descr)

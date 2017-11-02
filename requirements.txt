@@ -2,5 +2,9 @@ pandas
 numpy
 matplotlib
 flake8
-
-
+sklearn
+scipy
+ipython
+jupyter
+sympy
+nose
