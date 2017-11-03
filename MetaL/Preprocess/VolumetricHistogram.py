@@ -14,6 +14,7 @@ class VolumetricHistogram:
         print("Starting Volumetric Histogram Preprocessor...")
         self.X = self._reshape(X, (-1, 176, 208, 176))
         self.X = self.X[:, 20:155, 10:195, 25:155]  # Implement an actual 'offset slice' function
+        self.y = y
         self.descr = descr
 
         self.step = 5
@@ -48,7 +49,12 @@ class VolumetricHistogram:
         print("Progress for samples: {:.1f}".format(i/float(self.X.shape[0])*100))
         self._save_preprocessed_data(out)
 
+        self.X = out
+
         return out
+
+    def get_X_y(self):
+        return self.X, self.y
 
     def _save_preprocessed_data(self, histogram):
         bin_descr = [str(x) for x in self.histo_bins]

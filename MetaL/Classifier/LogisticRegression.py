@@ -42,7 +42,7 @@ class LogisticRegression:
             multi_class=self.multi_class,
             verbose=self.verbose,
             warm_start=self.warm_start,
-            n_jobsself=self.n_jobs
+            n_jobs=self.n_jobs
         )
 
     def run(self):
@@ -50,8 +50,4 @@ class LogisticRegression:
 
     def predict(self, X_new):
         out = self.model.predict(X_new)
-        print("out type is: ", type(out))
-        print("out: ::: ", out.shape)
-        print("out: ", out)
-        print("\n\n")
         return out

@@ -13,9 +13,11 @@ class Importer:
         else:
             self.X, self.y = self._import_data(X_path, y_path)
         self.dev = dev
-
+        self.X_path = X_path
+        self.y_path = y_path
+ 
         # Hyperparameters
-        self.dev_set_size = 2  # int(self.X.shape[0]*0.1) # **0.7 / **0.8 good values
+        self.dev_set_size = 5  # int(self.X.shape[0]*0.1) # **0.7 / **0.8 good values
 
         if dev:
             self.X, self.y = self._prepare_dev_set()  # is X and y is returned always applicable
@@ -31,9 +33,6 @@ class Importer:
         # Assumptions: X.npy and y.csv
         X = np.load(X_path)
 
-        print("General dimensions: ")
-        print("X: ", X.shape)
-
         if y_path is not None:
             y = pd.read_csv(y_path).as_matrix()
             y = np.squeeze(y)
@@ -47,12 +46,7 @@ class Importer:
         all_ind = np.arange(self.X.shape[0])
         np.random.shuffle(all_ind)
         dev_ind = all_ind[:self.dev_set_size]
-        if self.dev:
+        if self.y_path is None:
             return self.X[dev_ind], None
         else:
             return self.X[dev_ind], self.y[dev_ind]  # hope this'll work!
-
-
-if __name__ == "__main__":
-    Prep = Importer("./X_train.npy", "./y_1.csv", True)
-    Prep = Importer("./X_test.npy", None, "_eval")
