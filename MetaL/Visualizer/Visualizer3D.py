@@ -47,7 +47,7 @@ class Visualizer3D:
             sys.exit(16)
 
         plt.imshow(img_slice)
-        print("Saving...", dim, descr)
+        print("Saving Visualized data: (dim) (descr)", dim, descr)
         plt.savefig(descr + "_dim" + str(dim) + descr)
 
     def _slice_dimension(self, X, dim, off_min, off_max):

@@ -3,4 +3,5 @@
 *.png
 *.npy
 *.csv
+*.pyc
 venv/
