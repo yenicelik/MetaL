@@ -36,7 +36,6 @@ class Importer:
         if y_path is not None:
             y = pd.read_csv(y_path).as_matrix()
             y = np.squeeze(y)
-            print("y: ", y.shape)
         else:
             y = None
 

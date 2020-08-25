@@ -41,12 +41,13 @@ class VolumetricHistogram:
                         histogram[i, c, :] = local_hist
                         c += 1
 
+            print("Progress for samples: {:.1f}".format(i/float(self.X.shape[0])*100))
+
         out = np.reshape(
                 histogram,
                 (self.X.shape[0], histos_per_image * (len(self.histo_bins) - 1))
                 )
 
-        print("Progress for samples: {:.1f}".format(i/float(self.X.shape[0])*100))
         self._save_preprocessed_data(out)
 
         self.X = out
@@ -72,7 +73,3 @@ class VolumetricHistogram:
         # We have to reshape if we have a row-only dataset
         return np.reshape(X, dim)
 
-
-if __name__ == "__main__":
-    Prep = VolumetricHistogram("./X_train.npy", "./y_1.csv")
-    Prep = VolumetricHistogram("./X_test.npy", None, "_eval")

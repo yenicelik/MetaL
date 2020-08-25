@@ -7,6 +7,7 @@ from Preprocess.Identity import Identity
 
 from Classifier.Random import Random
 from Classifier.LogisticRegression import LogisticRegression
+from Classifier.Svm import LinearSVC, SVC, NuSVC
 
 from Losses.Losses import Losses
 
@@ -38,8 +39,12 @@ class LeanBack:
             InstancePreprocessor.preprocess()
             X, y = InstancePreprocessor.get_X_y()
 
+            print("Data we will be working on has shape: ")
+            print("X: ", X.shape)
+            print("y: ", y.shape)
+
             # Multiple threads. Create multiple threads that concurrently fit a model and predict using that value
-            Classifiers = [Random, LogisticRegression]
+            Classifiers = [Random, LogisticRegression, LinearSVC, SVC, NuSVC]
             Loss = Losses()
             # -------- START HERE
             for Classifier in Classifiers:
@@ -48,7 +53,7 @@ class LeanBack:
                 InstanceClassifier.run()
 
                 pred_y = InstanceClassifier.predict(X)
-                Loss.add_data(y, pred_y)
+                Loss.add_data(y, pred_y),
                 loss = Loss.mean_squared_error()
                 print("MSE: {:.3f}".format(float(loss)))
             # -------- JOIN HERE
