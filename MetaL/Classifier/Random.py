@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class Random:
 
     def __init__(self, X, y):

@@ -1,6 +1,5 @@
 import sklearn.svm
 
-
 class LinearSVC:
 
     def __init__(self, X, y):
@@ -171,4 +170,3 @@ class NuSVC:
     def predict(self, X_new):
         self.pred_y = self.model.predict(X_new)
         return self.pred_y
-

@@ -54,7 +54,6 @@ class Visualizer3D:
         # From the respective dimensions, return only what is from off_min, up to off_max
         pass
 
-
 if __name__ == "__main__":
     Vis3D = Visualizer3D("./X_train.npy", "./y_1.csv")
     Vis3D_eval = Visualizer3D("./X_test.npy", None, "_eval")

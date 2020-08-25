@@ -72,4 +72,3 @@ class VolumetricHistogram:
     def _reshape(self, X, dim):
         # We have to reshape if we have a row-only dataset
         return np.reshape(X, dim)
-

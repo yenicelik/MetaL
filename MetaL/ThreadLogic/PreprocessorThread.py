@@ -20,6 +20,3 @@ class PreprocessorThread(multiprocessing.Process):
             "\ty_path: " + str(y_path) + ",\n" +
             "}"
         )
-        
-
-

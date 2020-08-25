@@ -5,7 +5,6 @@ import numpy as np
 # Assume we have (n, dim1, dim2, dim3) data
 # Add a possibility to select a top-left and bottom-right pixel to crop the image by (with clipping values!)
 
-
 class Identity:
     """ This class viszalizes any 3D object """
 
