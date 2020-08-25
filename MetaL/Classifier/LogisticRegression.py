@@ -1,6 +1,5 @@
 from sklearn import linear_model
 
-
 class LogisticRegression:
 
     def __init__(self, X, y):

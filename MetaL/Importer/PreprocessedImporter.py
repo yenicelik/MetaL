@@ -72,7 +72,6 @@ class PreprocessedImporter:
         else:
             return self.X[dev_ind], self.y[dev_ind]  # hope this'll work!
 
-
 if __name__ == "__main__":
     Prep = PreprocessedImporter("./X_train.npy", "./y_1.csv", True)
     Prep = PreprocessedImporter("./X_test.npy", None, "_eval")

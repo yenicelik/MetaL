@@ -1,7 +1,6 @@
 import numpy as np
 from sklearn import metrics
 
-
 class Losses:
 
     def __init__(self):

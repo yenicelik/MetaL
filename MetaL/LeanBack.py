@@ -58,6 +58,5 @@ class LeanBack:
                 print("MSE: {:.3f}".format(float(loss)))
             # -------- JOIN HERE
    
-
 if __name__ == "__main__":
     lb = LeanBack()
